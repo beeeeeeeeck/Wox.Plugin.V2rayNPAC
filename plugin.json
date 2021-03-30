@@ -1,0 +1,13 @@
+{
+    "ID":"7067871d-dd17-40ea-b8f9-2195273cd298",
+    "ActionKeyword":"pac",
+    "Name":"User PAC editing",
+    "Description":"Editing your user PAC rules",
+    "Author":"beckl",
+    "Version":"1.0",
+    "Language":"python",
+    "Website":"https://github.com/Wox-launcher/Wox",
+    "IcoPath":"Images\\app.png",
+    "ExecuteFileName":"main.py",
+    "Disabled": false
+}
