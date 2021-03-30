@@ -51,7 +51,7 @@ class V2rayNPACEditor(Wox):
             })
             return results
 
-        if len(query) > 0 and query == "sync" and len(GithubAccessToken) > 0:
+        if len(query) > 0 and query == "sync":
             results.append({
                 "Title": "Sync up user rules",
                 "SubTitle": "Sync up with github storage",
