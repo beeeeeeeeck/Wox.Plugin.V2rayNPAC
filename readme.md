@@ -23,9 +23,9 @@ Pull down this repository at your Wox plugin directory which is usually in **[US
 
 ### Prerequisites
 
- > `Wox`: Install Wox from `https://github.com/Wox-launcher/Wox/releases`
+ > `Wox`: Install Wox from [here](https://github.com/Wox-launcher/Wox/releases)
  >
- > `Python`: this is required by Wox - `https://www.python.org/downloads/windows/`
+ > `Python`: this is required by Wox - [check this out to install](https://www.python.org/downloads/windows/)
  >
  > `Python libs`: since this plugin is implemented by Python, we need the following python libs installed
  > - `pip install PyGithub`
