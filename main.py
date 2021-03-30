@@ -7,8 +7,8 @@ import re
 import subprocess
 
 with open(os.path.abspath("config.json"), encoding = "utf-8") as f:
-  data = json.load(f)
-  v2rayNDirPath = data["v2rayN-Path"]
+    data = json.load(f)
+    v2rayNDirPath = data["v2rayN-Path"]
 
 pluginHomeDirPath = os.path.dirname(os.path.realpath(__file__))
 configFilePath = os.path.join(v2rayNDirPath, 'guiNConfig.json') if len(v2rayNDirPath) > 0 else ''
@@ -50,7 +50,7 @@ class V2rayNPACEditor(Wox):
         data = json.load(f)
         # Closing file
         f.close()
-        
+
         existingRules = data['userPacRule']
         if len(query) > 0:
             existingRules = filter(lambda rule: rule.startswith(query), existingRules)
