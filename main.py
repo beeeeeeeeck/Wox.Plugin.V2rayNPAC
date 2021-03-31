@@ -72,8 +72,8 @@ class V2rayNPACEditor(Wox):
         f.close()
 
         existingRules = data['userPacRule']
-        if len(query) > 0:
-            existingRules = filter(lambda rule: rule.startswith(query), existingRules)
+        if query and len(query) > 0:
+            existingRules = filter(lambda rule: query in rule, existingRules)
             if bool(re.match("(([\da-zA-Z])([_\w-]{,62})\.){,127}(([\da-zA-Z])[_\w-]{,61})?([\da-zA-Z]\.((xn\-\-[a-zA-Z\d]+)|([a-zA-Z\d]{2,})))", query)):
                 results.append({
                     "Title": "Add new rule",
