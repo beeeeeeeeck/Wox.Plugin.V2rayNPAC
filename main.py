@@ -71,6 +71,22 @@ class V2rayNPACEditor(Wox):
         # Closing file
         f.close()
 
+        vmesses = data['vmess']
+        if len(vmesses) > 1:
+            for index, vmess in enumerate(vmesses):
+                name = vmess["remarks"] if len(vmess["remarks"]) > 0 else vmess["address"]
+                results.append({
+                    "Title": "Play with - {}".format(name),
+                    "SubTitle": "Vmess Address - {}".format(vmess["address"]),
+                    "IcoPath": "Images/vmess.png",
+                    "ContextData": "ctxData",
+                    "JsonRPCAction": {
+                        'method': 'take_action_4_switch_vemss',
+                        'parameters': [index],
+                        'dontHideAfterAction': False
+                    }
+                })
+
         existingRules = data['userPacRule']
         if query and len(query) > 0:
             existingRules = filter(lambda rule: query in rule, existingRules)
@@ -164,6 +180,31 @@ class V2rayNPACEditor(Wox):
             subprocess.Popen([os.path.join(v2rayNDirPath, "v2rayN.exe")])
 
             toaster.show_toast("Wox.Plugin.v2rayNPAC", "Existing rule has been removed and v2rayN is just restarted !", icon_path = "Images/success_notification.ico", duration = 10, threaded = True)
+
+        return None
+
+    def take_action_4_switch_vemss(self, index):
+        # Opening v2rayN config JSON file
+        f = open(configFilePath,)
+        # returns JSON object as a dictionary
+        data = json.load(f)
+        # Closing file
+        f.close()
+
+        vmessIndex = data["index"]
+        if vmessIndex == index:
+            return None
+
+        data["index"] = index
+
+        with open(configFilePath, 'w+', encoding = 'utf-8') as f:
+            json.dump(data, f, ensure_ascii = False, indent = 4)
+
+            os.system('taskkill /IM "v2rayN.exe" /F')
+            # print(f"killed v2rayN")
+            subprocess.Popen([os.path.join(v2rayNDirPath, "v2rayN.exe")])
+
+            toaster.show_toast("Wox.Plugin.v2rayNPAC", "Current vemss has been switched and v2rayN is just restarted !", icon_path = "Images/success_notification.ico", duration = 10, threaded = True)
 
         return None
 
